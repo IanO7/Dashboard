@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard - Light Mode</title>
+    <link rel="stylesheet" href="styles_light.css">
+    <!-- Include Font Awesome for weather and sunrise/sunset icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Emergency Alert Section -->
+        <div class="emergency-alert">
+            <h2>Emergency Alert</h2>
+            <p id="alert-text">No current emergencies</p>
+        </div>
+
+        <!-- Weather Information Section -->
+        <div class="weather-card">
+            <div class="weather-icon">
+                <i class="fa-solid fa-sun"></i>
+            </div>
+            <div class="weather-info">
+                <h3>Sunny</h3>
+                <p>22°C</p>
+            </div>
+        </div>
+        
+        
+
+        <!-- Date and Time Section -->
+        <div class="date-time">
+            <div id="current-time">
+                <p id="time"></p>
+            </div>
+            <div id="current-date">
+                <p id="date"></p>
+            </div>
+        </div>
+
+        <!-- Sunrise and Sunset Section -->
+        <div class="sun-times">
+            <h2>Sunrise & Sunset</h2>
+            <div class="sun-icon">
+                <i class="fas fa-sunrise"></i>
+                <p>Sunrise: <span id="sunrise">07:30 AM</span></p>
+            </div>
+            <div class="sun-icon">
+                <i class="fas fa-sunset"></i>
+                <p>Sunset: <span id="sunset">05:45 PM</span></p>
+            </div>
+        </div>
+
+        <!-- Air Quality Index Section -->
+        <div class="air-quality">
+            <h2>Air Quality Index</h2>
+            <div class="aqi-card">
+                <p>Current AQI: <span id="aqi">50</span></p>
+                <p>Level: <span id="aqi-level">Good</span></p>
+                <!-- AQI Progress Bar -->
+                <div class="aqi-bar">
+                    <div class="aqi-progress" style="width: 50%; background-color: #4caf50;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to switch to Dark Mode -->
+    <div class="button-container">
+        <a href="dashboard_dark.html">
+            <button class="wide-button">Switch to Dark Mode</button>
+        </a>
+    </div>
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            const timeElement = document.getElementById('time');
+            const dateElement = document.getElementById('date');
+
+            const now = new Date();
+            
+            // Format time as: HH:MM AM/PM
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+            const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+            timeElement.textContent = formattedTime;
+
+            // Format date as: Day, Month Date (e.g., Thu, Dec 23)
+            const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+            dateElement.textContent = formattedDate;
+        }
+
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+
+        // Call function initially to set time/date when the page loads
+        updateDateTime();
+    </script>
+
+</body>
+</html>
