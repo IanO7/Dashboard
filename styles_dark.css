@@ -44,14 +44,25 @@ p {
     color: #f1f1f1; /* Light text color */
 }
 
-.weather, .air-quality, .sun-times, .date-time {
+.weather, .air-quality, .sun-times, .date-time, .plane-tracker {
     background-color: #333; /* Darker background for cards */
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Updated Weather Card Styling */
+/* Improved Sunrise & Sunset Styling */
+.sun-times {
+    background-color: #333;  /* Keeping your existing color */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+/* Weather Card Styling */
 .weather-card {
     display: flex;
     align-items: center;
@@ -64,7 +75,7 @@ p {
 .weather-icon {
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 10px; /* Adjust spacing between icon and text */
 }
 
 .weather-icon i {
@@ -85,10 +96,11 @@ p {
 
 .weather-info p {
     font-size: 1.2em;
-    color: #bbb; /* Lighter grey text */
+    color: #bbb;
     margin: 5px 0 0;
 }
 
+/* Emergency Alert Styling */
 .emergency-alert {
     grid-column: span 2;
     background-color: #3e1a1a; /* Dark red background */
@@ -102,36 +114,35 @@ p {
 }
 
 #alert-text {
-    color: #f44336; /* Bright red for alert text */
+    color: #f44336;
+    font-weight: bold;
 }
 
-/* AQI Progress Bar Styles */
+/* AQI Progress Bar Styles for Dark Mode */
 .aqi-bar {
     width: 100%;
-    height: 15px;
-    background-color: #555; /* Dark grey background for the bar */
-    border-radius: 8px;
+    height: 20px;
+    background-color: #444; /* Darker grey background */
+    border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    margin: 15px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 .aqi-progress {
     height: 100%;
-    width: 0; /* Default, will be set dynamically */
-    border-radius: 8px;
-    transition: width 0.5s ease;
+    width: 0; /* Default, dynamically updated */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
 }
 
-/* AQI Levels and Bar Color */
-.aqi-good {
-    background-color: #4caf50; /* Green */
-}
-
-.aqi-moderate {
-    background-color: #ff9800; /* Orange */
-}
-
-.aqi-poor {
-    background-color: #f44336; /* Red */
+/* AQI Status Text */
+#aqi-status {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #f1f1f1; /* Light text color */
 }
 
 /* Date & Time Styling */
@@ -173,4 +184,82 @@ p {
 
 .wide-button:hover {
     background-color: #45a049;
+}
+
+/* Dark Mode Style for the Plane Tracker container */
+.plane-tracker {
+    padding: 20px;
+    background-color: #2d2d2d; /* Dark background color */
+    border-radius: 8px;
+    max-width: 1000px; /* Increased width of container */
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Dark mode icon color */
+.plane-tracker i {
+    font-size: 40px;
+    color: #00aaff; /* Bright blue for the icon */
+}
+
+/* Dark mode text color */
+.plane-tracker span {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #ffffff; /* White text for better visibility */
+}
+
+/* Dark Mode for the container of flight cards */
+#top-flights {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Distribute the space evenly between cards */
+    gap: 20px; /* Add some space between cards */
+    flex-wrap: nowrap; /* Prevent wrapping, keep them in a single row */
+    margin-top: 20px;
+}
+
+/* Dark Mode for each flight card */
+.flight-card {
+    background-color: #3a3a3a; /* Darker background for the cards */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 280px; /* Set a fixed width for each card */
+    transition: transform 0.3s ease;
+    flex: 0 0 auto; /* Prevent flex-grow and flex-shrink, keep the card size fixed */
+}
+
+/* Hover effect for the dark mode cards */
+.flight-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Dark Mode card text */
+.flight-card h3 {
+    font-size: 22px;
+    color: #ffffff; /* White color for headings */
+    margin: 0;
+}
+
+/* Dark Mode description text color */
+.flight-card p {
+    font-size: 18px;
+    color: #bbbbbb; /* Light grey color for text */
+    margin: 5px 0;
+}
+
+/* Dark Mode flight number or distance emphasis */
+.flight-card strong {
+    color: #00aaff; /* Bright blue for emphasis */
+}
+
+/* Adjust gap between cards in dark mode */
+#top-flights {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Decrease the gap between the cards */
+    flex-wrap: nowrap;
+    margin-top: 20px;
 }
